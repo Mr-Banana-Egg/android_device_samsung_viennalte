@@ -154,6 +154,9 @@ TARGET_LD_SHIM_LIBS = \
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libperipheral_client.so|libshim_binder.so
 
+TARGET_LD_SHIM_LIBS += \
+    /system/vendor/lib/libril-qc-qmi-1.so|libshim_audio.so
+
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mediaserver=22 \
     /system/vendor/bin/mm-qcamera-daemon=22 \
@@ -188,6 +191,10 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 include $(LOCAL_PATH)/sepolicy/sepolicy.mk
 
 SELINUX_IGNORE_NEVERALLOWS := true
+
+#Display
+TARGET_DISABLE_POSTRENDER_CLEANUP := true
+TARGET_HAS_MEMFD_BACKPORT := true
 
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
