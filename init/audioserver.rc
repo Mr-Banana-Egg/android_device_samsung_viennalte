@@ -1,0 +1,14 @@
+service audioserver /system/bin/audioserver
+    class core
+    user audioserver
+    group audio camera drmrpc media mediadrm net_bt net_bt_admin net_bw_acct wakelock
+    capabilities BLOCK_SUSPEND
+    ioprio rt 4
+    task_profiles ProcessCapacityHigh HighPerformance
+    disabled
+    onrestart restart vendor.audio-hal
+    onrestart restart vendor.audio-hal-2-0
+    onrestart restart audio-hal-2-0
+
+on property:init.svc.vendor.audio-hal=running
+    start audioserver
