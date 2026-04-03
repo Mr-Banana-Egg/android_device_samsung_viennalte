@@ -30,26 +30,16 @@ repo init -u git://github.com/LineageOS/android.git -b lineage-17.0
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest>
-  <project name="Valera1978/android_device_samsung_viennalte" path="device/samsung/viennalte" remote="github" />
-  <project name="Valera1978/android_kernel_samsung_msm8974" path="kernel/samsung/msm8974" remote="github" />
-  <project name="Valera1978/android_vendor_samsung_viennalte" path="vendor/samsung/viennalte" remote="github" />
-  <project name="LineageOS/android_device_samsung_qcom-common" path="device/samsung/qcom-common" remote="github" />
-  <project name="LineageOS/android_hardware_samsung" path="hardware/samsung" remote="github" />
+<manifest> 
+  <project name="Mr-Banana-Egg/android_device_samsung_viennalte" path="device/samsung/viennalte" remote="github" revision="lineage-18.1" />
+  <project name="Mr-Banana-Egg/android_kernel_samsung_msm8974" path="kernel/samsung/msm8974" remote="github" revision="lineage-18.1"/>
+  <project name="Mr-Banana-Egg/android_vendor_samsung_viennalte" path="vendor/samsung/viennalte" remote="github" revision="lineage-18.1"/>
+  <project name="LineageOS/android_device_samsung_qcom-common" path="device/samsung/qcom-common" remote="github" revision="lineage-18.1"/>
+  <project name="LineageOS/android_hardware_samsung" path="hardware/samsung" remote="github" revision="lineage-18.1" />
 </manifest>
 ```
 
 repo sync
-
-  - Copy proprietary vendor files
-
-  There are two options to to that. Connect your device with adb enabled and run:
-
-./extract-files.sh
-
-  Or if you have the system image unpacked on your disk, then simply run:
-
-    STOCK_ROM_DIR=/path/to/system ./extract-files.sh
 
   - Setup environment
 
