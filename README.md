@@ -18,53 +18,43 @@ Copyright (C) 2017 Valera Chigir <valera1978@tut.by>
 * How To Build LineageOS for Samsung Galaxy Note Pro 12.2
 
   - Make a workspace
-
-mkdir cm17
-cd cm17
-
+```
+mkdir cm19; cd cm19
+```
   - Do repo init & sync
-
-repo init -u git://github.com/LineageOS/android.git -b lineage-17.0
-
+```
+repo init -u https://github.com/LineageOS/android.git -b lineage-19.1 --git-lfs
+```
   - Create .repo/local_manifests/roomservice.xml with the following content:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest>
-  <project name="Valera1978/android_device_samsung_viennalte" path="device/samsung/viennalte" remote="github" />
-  <project name="Valera1978/android_kernel_samsung_msm8974" path="kernel/samsung/msm8974" remote="github" />
-  <project name="Valera1978/android_vendor_samsung_viennalte" path="vendor/samsung/viennalte" remote="github" />
-  <project name="LineageOS/android_device_samsung_qcom-common" path="device/samsung/qcom-common" remote="github" />
-  <project name="LineageOS/android_hardware_samsung" path="hardware/samsung" remote="github" />
+<manifest> 
+  <project name="Mr-Banana-Egg/android_device_samsung_viennalte" path="device/samsung/viennalte" remote="github" revision="lineage-19.1" />
+  <project name="Mr-Banana-Egg/android_kernel_samsung_msm8974" path="kernel/samsung/msm8974" remote="github" revision="lineage-19.1"/>
+  <project name="Mr-Banana-Egg/android_vendor_samsung_viennalte" path="vendor/samsung/viennalte" remote="github" revision="lineage-19.1"/>
+  <project name="LineageOS/android_device_samsung_qcom-common" path="device/samsung/qcom-common" remote="github" revision="lineage-19.1"/>
+  <project name="LineageOS/android_hardware_samsung" path="hardware/samsung" remote="github" revision="lineage-19.1" />
 </manifest>
 ```
-
+```
 repo sync
-
-  - Copy proprietary vendor files
-
-  There are two options to to that. Connect your device with adb enabled and run:
-
-./extract-files.sh
-
-  Or if you have the system image unpacked on your disk, then simply run:
-
-    STOCK_ROM_DIR=/path/to/system ./extract-files.sh
-
+```
   - Setup environment
-
+```
 . build/envsetup.sh
-
+```
   - fixes for build (repopick)
 
 . picks.sh
 
-  - Build cm17
-
+  - Build cm19
+```
 brunch viennalte
-
+```
 or another way:
-
+```
 lunch lineage_viennalte-userdebug
 export USE_CCACHE=1
 make -j16 bacon
+```
